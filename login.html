@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Signup | SkillGap AI</title>
+    <meta name="description" content="SkillGap AI demo login and signup page for learner accounts, roadmaps, and skill progress tracking." />
+    <link rel="canonical" href="https://skillgapai.in/login.html" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="SkillGap AI home"><img src="assets/logo.png" alt="SkillGap AI" /></a>
+      <nav class="nav-links" aria-label="Primary"><a href="about.html">About</a><a href="students.html">Students</a><a href="institutions.html">Colleges</a><a href="employers.html">Employers</a><a href="contact.html">Contact</a></nav>
+      <div class="header-actions"><a class="login-link" href="login.html">Login</a><a class="primary-button small" href="index.html#assessment">Get my roadmap</a></div>
+    </header>
+    <main>
+      <section class="auth-shell section-shell">
+        <div><p class="eyebrow">Demo account</p><h1>Save learner details and track roadmap interest.</h1><p>This demo signup stores user details in the browser. For real public login, connect Supabase or Firebase later.</p><a class="secondary-button" href="admin.html">Open admin dashboard</a></div>
+        <form class="control-panel" id="authForm">
+          <label for="authName">Name</label>
+          <input id="authName" name="name" type="text" placeholder="Your name" required />
+          <label for="authEmail">Email</label>
+          <input id="authEmail" name="email" type="email" placeholder="you@example.com" required />
+          <label for="authPhone">Phone</label>
+          <input id="authPhone" name="phone" type="tel" placeholder="+91..." />
+          <label for="authPassword">Password</label>
+          <input id="authPassword" name="password" type="password" placeholder="Create demo password" required />
+          <button class="primary-button" type="submit">Create Demo Account</button>
+          <p class="microcopy" id="authStatus">Demo only: do not use a real important password.</p>
+        </form>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div><a class="brand" href="index.html"><img src="assets/logo.png" alt="SkillGap AI" /></a><p>Turning skill gaps into growth.</p></div>
+      <div class="footer-columns">
+        <nav><strong>Company</strong><a href="about.html">About</a><a href="contact.html">Contact</a><a href="login.html">Login</a></nav>
+        <nav><strong>Explore</strong><a href="students.html">Students</a><a href="institutions.html">Colleges</a><a href="employers.html">Employers</a></nav>
+        <nav><strong>Legal</strong><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a><a href="refund.html">Refunds</a></nav>
+      </div>
+      <p class="copyright">© 2026 SkillGap AI. All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

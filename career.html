@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your roadmap | SkillGap AI</title>
+    <meta name="description" content="Your personalized career roadmap from SkillGap AI." />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://skillgapai.in/career.html" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="SkillGap AI home"><img src="assets/logo.png" alt="SkillGap AI" /></a>
+      <div class="header-actions">
+        <a class="login-link" href="index.html?edit=1#assessment">Edit answers</a>
+        <a class="primary-button small" href="index.html#assessment">New roadmap</a>
+      </div>
+    </header>
+
+    <main id="result">
+      <section class="result-hero section-shell">
+        <p class="eyebrow">Your personalized roadmap</p>
+        <h1 id="resTitle">Your roadmap</h1>
+        <div class="meta-chips" id="resChips"></div>
+        <p class="notice" id="resNotice" hidden></p>
+      </section>
+
+      <section class="section-shell" style="padding-block:0">
+        <div class="stat-row" id="resStats"></div>
+      </section>
+
+      <section class="section-shell result-section">
+        <h2>Your skill gap</h2>
+        <div class="gap-grid">
+          <div class="gap-col"><h3>Already strong</h3><ul id="resStrong"></ul></div>
+          <div class="gap-col build"><h3>To build</h3><ul id="resBuild"></ul></div>
+        </div>
+      </section>
+
+      <section class="section-shell result-section">
+        <h2>Your roadmap</h2>
+        <div class="timeline" id="resTimeline"></div>
+      </section>
+
+      <section class="section-shell result-section">
+        <h2>Projects to build</h2>
+        <div class="project-grid" id="resProjects"></div>
+      </section>
+
+      <section class="section-shell result-section">
+        <h2>Tools</h2>
+        <ul class="tool-list" id="resTools"></ul>
+        <p style="margin-top:20px" id="resRegion"></p>
+      </section>
+
+      <section class="section-shell result-actions">
+        <button class="primary-button" type="button" id="resPrint">Save as PDF</button>
+        <a class="secondary-button" id="resWhatsapp" href="#" target="_blank" rel="noopener">Get detailed report</a>
+        <a class="secondary-button" href="index.html?edit=1#assessment">Edit answers</a>
+      </section>
+      <section class="section-shell disclaimer">
+        <p>This roadmap is guidance based on your answers. It does not guarantee a job or salary.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div><a class="brand" href="index.html"><img src="assets/logo.png" alt="SkillGap AI" /></a><p>Turning skill gaps into growth.</p></div>
+      <div class="footer-columns"><nav><strong>Legal</strong><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></nav></div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="assessment.js"></script>
+  </body>
+</html>

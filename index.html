@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillGap AI | Personalized Career Roadmap</title>
+    <meta name="description" content="Answer a few questions about your field and level. SkillGap AI finds your skill gaps and builds a roadmap made for you." />
+    <link rel="canonical" href="https://skillgapai.in/" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="SkillGap AI home"><img src="assets/logo.png" alt="SkillGap AI" /></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#plans">Plans</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="login-link" href="login.html">Login</a>
+        <a class="primary-button small" href="#assessment">Get my roadmap</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section-shell">
+        <div>
+          <p class="eyebrow">Career roadmap for your field</p>
+          <h1>Find your skill gap. Get a roadmap <em>built for you.</em></h1>
+          <p class="hero-text">Tell us your field, level and goal. We ask a few questions about your skills, then plan your next steps.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#assessment">Start free assessment</a>
+            <a class="secondary-button" href="#how">How it works</a>
+          </div>
+        </div>
+        <aside class="sample-card" aria-label="Sample roadmap">
+          <div class="sample-top">
+            <div>
+              <small>Sample result</small>
+              <strong>Graphic Designer</strong>
+              <small>Intermediate · India · First job</small>
+            </div>
+            <div class="score-badge" style="--score: 64">64%</div>
+          </div>
+          <ul class="sample-steps">
+            <li><b>Weeks 1–2</b><span>Fix weak areas: case-study writing</span></li>
+            <li><b>Weeks 3–4</b><span>Get fluent in Figma and After Effects</span></li>
+            <li><b>Weeks 5–8</b><span>Build one real brand project</span></li>
+            <li><b>Weeks 9–10</b><span>Resume, portfolio and applications</span></li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="assessment" id="assessment">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Free assessment</p>
+            <h2>Tell us about yourself. We will plan the rest.</h2>
+          </div>
+
+          <form class="wizard" id="wizard" novalidate>
+            <div class="wizard-head">
+              <div class="wizard-meta"><strong id="stepTitle">Your profile</strong><span id="stepCount">Step 1 of 3</span></div>
+              <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+            </div>
+
+            <div class="wizard-body">
+              <!-- Step 1: profile -->
+              <div class="wizard-step active" data-step="1">
+                <h3>Your profile</h3>
+                <p class="lead">Pick your field first. The next questions will match it.</p>
+                <div class="field">
+                  <label for="career">Career path</label>
+                  <select id="career" name="career" required><option value="" disabled selected>Select your field</option></select>
+                </div>
+                <div class="field">
+                  <span class="label">Current level</span>
+                  <div class="choices" id="levelChoices">
+                    <label class="choice"><input type="radio" name="level" value="beginner" /><span>Beginner</span></label>
+                    <label class="choice"><input type="radio" name="level" value="intermediate" checked /><span>Intermediate</span></label>
+                    <label class="choice"><input type="radio" name="level" value="advanced" /><span>Advanced</span></label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label for="region">Target region</label>
+                    <select id="region" name="region">
+                      <option value="india" selected>India</option>
+                      <option value="globalRemote">Global remote</option>
+                      <option value="usa">United States</option>
+                      <option value="uk">United Kingdom</option>
+                      <option value="canada">Canada</option>
+                      <option value="uae">UAE</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <span class="label">Goal</span>
+                    <div class="choices">
+                      <label class="choice"><input type="radio" name="goal" value="firstJob" checked /><span>First job</span></label>
+                      <label class="choice"><input type="radio" name="goal" value="betterSalary" /><span>Better salary</span></label>
+                      <label class="choice"><input type="radio" name="goal" value="freelance" /><span>Freelance</span></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: skills (filled from the chosen field) -->
+              <div class="wizard-step" data-step="2">
+                <h3 id="skillsHeading">Your skills</h3>
+                <p class="lead">Select everything that applies. Skip what does not.</p>
+                <div class="field">
+                  <span class="label">Tools you already use</span>
+                  <div class="choices" id="toolChoices"></div>
+                </div>
+                <div class="field">
+                  <span class="label">Skills you are confident in</span>
+                  <div class="choices" id="skillChoices"></div>
+                </div>
+              </div>
+
+              <!-- Step 3: proof, blocker, time -->
+              <div class="wizard-step" data-step="3">
+                <h3>Proof and time</h3>
+                <p class="lead">This sets how long your roadmap will take.</p>
+                <div class="field">
+                  <span class="label" id="proofLabel">Your work so far</span>
+                  <div class="choices stack" id="proofChoices"></div>
+                </div>
+                <div class="field">
+                  <span class="label">Which area is hardest for you right now?</span>
+                  <div class="choices" id="blockerChoices"></div>
+                </div>
+                <div class="field">
+                  <span class="label">Time you can give each week</span>
+                  <div class="choices" id="hoursChoices">
+                    <label class="choice"><input type="radio" name="hours" value="lt5" /><span>Under 5 hrs</span></label>
+                    <label class="choice"><input type="radio" name="hours" value="5to10" checked /><span>5–10 hrs</span></label>
+                    <label class="choice"><input type="radio" name="hours" value="10to20" /><span>10–20 hrs</span></label>
+                    <label class="choice"><input type="radio" name="hours" value="20plus" /><span>20+ hrs</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="wizard-error" id="wizardError" role="alert"></p>
+            <div class="wizard-foot">
+              <button class="link-button" type="button" id="backBtn" hidden>Back</button>
+              <button class="primary-button" type="button" id="nextBtn" style="margin-left:auto">Continue</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section-shell" id="how">
+        <div class="section-heading">
+          <p class="eyebrow">How it works</p>
+          <h2>Three steps to a plan that fits you.</h2>
+        </div>
+        <div class="steps-grid">
+          <article><b>1</b><h3>Choose your field</h3><p>Pick your career path, level, region and goal.</p></article>
+          <article><b>2</b><h3>Answer field questions</h3><p>Share the tools and skills you have and the proof you can show.</p></article>
+          <article><b>3</b><h3>Get your roadmap</h3><p>See your gaps, a week-by-week plan and projects to build.</p></article>
+        </div>
+      </section>
+
+      <section class="section-shell" id="plans" style="padding-top:0">
+        <div class="section-heading">
+          <p class="eyebrow">Plans</p>
+          <h2>Start free. Upgrade when you need more.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article><span>Free</span><strong>Rs 0</strong><p>Skill gap summary and a personalized roadmap.</p><a href="#assessment">Start free</a></article>
+          <article class="featured"><span>Pro report</span><strong>Rs 299</strong><p>Detailed report with projects, resume review and a 6-week action plan.</p><a href="#contact">Request report</a></article>
+          <article><span>Institutions</span><strong>Custom</strong><p>Student dashboards and batch reports for colleges.</p><a href="#contact">Contact us</a></article>
+        </div>
+      </section>
+
+      <section class="section-shell" id="faq" style="padding-top:0">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions.</h2>
+        </div>
+        <div class="faq-list">
+          <details><summary>How is my roadmap personalized?</summary><p>It uses your field, level, region, goal, current tools and skills, proof of work and weekly time. Change any answer and the plan changes.</p></details>
+          <details><summary>Who is it for?</summary><p>Students, fresh graduates, working professionals, freelancers and career switchers.</p></details>
+          <details><summary>Is it free?</summary><p>Yes. The assessment and roadmap are free. A detailed report is optional.</p></details>
+          <details><summary>Does it guarantee a job?</summary><p>No. It gives direction and readiness insights. It does not guarantee employment or salary.</p></details>
+        </div>
+      </section>
+
+      <section class="section-shell" id="contact" style="padding-top:0">
+        <div class="contact-wrap">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Need help with your roadmap?</h2>
+            <p>Send your details for a detailed report, a college plan or any question.</p>
+            <div class="contact-info">
+              <div><span>Phone</span><a href="tel:+919818114438">+91 9818114438</a></div>
+              <div><span>WhatsApp</span><a href="https://wa.me/919818114438?text=Hi%20SkillGap%20AI%2C%20I%20want%20a%20career%20roadmap." target="_blank" rel="noopener">Message us</a></div>
+              <div><span>Address</span><p>Najafgarh, New Delhi, Delhi 110043, India</p></div>
+            </div>
+          </div>
+          <form class="lead-form" id="leadForm">
+            <label for="leadName">Name</label>
+            <input id="leadName" name="name" type="text" placeholder="Your name" required />
+            <label for="leadPhone">Phone or WhatsApp</label>
+            <input id="leadPhone" name="phone" type="tel" placeholder="+91..." required />
+            <label for="leadEmail">Email (optional)</label>
+            <input id="leadEmail" name="email" type="email" placeholder="you@example.com" />
+            <label for="leadGoal">What do you need?</label>
+            <select id="leadGoal" name="goal">
+              <option value="Career roadmap">Career roadmap</option>
+              <option value="Paid report">Detailed report</option>
+              <option value="College plan">College plan</option>
+              <option value="Employer enquiry">Employer enquiry</option>
+            </select>
+            <button class="primary-button" type="submit">Send on WhatsApp</button>
+            <p class="form-status" id="leadStatus"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/logo.png" alt="SkillGap AI" /></a>
+        <p>Turning skill gaps into growth.</p>
+      </div>
+      <div class="footer-columns">
+        <nav><strong>Company</strong><a href="about.html">About</a><a href="contact.html">Contact</a><a href="login.html">Login</a></nav>
+        <nav><strong>Explore</strong><a href="students.html">Students</a><a href="institutions.html">Colleges</a><a href="employers.html">Employers</a></nav>
+        <nav><strong>Legal</strong><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a><a href="refund.html">Refunds</a></nav>
+      </div>
+      <p class="copyright">© 2026 SkillGap AI. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="data.js"></script>
+    <script src="assessment.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
